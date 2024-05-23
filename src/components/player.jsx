@@ -1,10 +1,28 @@
-export default function Player({name, symbol}){
-   return(
-    <li id="player-name">
+import { useState } from "react"
+
+export default function Player({ name, symbol }) {
+
+    const [isEditing, sIsEditing] = useState(false)
+
+    let dCode;  
+    
+    if(!isEditing){
+           dCode = <span className="player-name">{name}</span>
+        }else{
+            dCode = <input type="text" required/>
+        }
+     
+    function handleClick(){
+      sIsEditing(true)
+    }
+      
+    return (
+        <li id="player-name">
             <span className="player">
-              <span className="player-name">{name}</span>
-              <span className="player-symbol">{symbol}</span>
+                 {dCode}
+                <span className="player-symbol">{symbol}</span>
             </span>
-          </li>
-   )
+            <button onClick={handleClick}>Edit</button>
+        </li>
+    )
 }
