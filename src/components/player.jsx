@@ -13,7 +13,7 @@ export default function Player({ name, symbol }) {
         }
      
     function handleClick(){
-      sIsEditing(!isEditing)
+      sIsEditing((editing) => !editing) //better this way
     }
       
     return (
