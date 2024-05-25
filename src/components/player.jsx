@@ -9,11 +9,11 @@ export default function Player({ name, symbol }) {
     if(!isEditing){
            dCode = <span className="player-name">{name}</span>
         }else{
-            dCode = <input type="text" required/>
+            dCode = <input type="text" required value={name}/>
         }
      
     function handleClick(){
-      sIsEditing(true)
+      sIsEditing(!isEditing)
     }
       
     return (
@@ -22,7 +22,7 @@ export default function Player({ name, symbol }) {
                  {dCode}
                 <span className="player-symbol">{symbol}</span>
             </span>
-            <button onClick={handleClick}>Edit</button>
+            <button onClick={handleClick}>{isEditing ? "Save": "Edit"}</button>
         </li>
     )
 }
